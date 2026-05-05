@@ -154,8 +154,8 @@
                         <div class="tech-box"><span>Tempo</span><strong>1.5h</strong></div>
                     </div>
                     <div class="btn-row">
-                        <a href="https://www.google.com/maps/d/edit?mid=1zPN_J8c7Cka_MFWO9vsWQhy2FAzkV5I&usp=sharing" class="btn-act btn-maps">MAPPA</a>
-                        <a href="verde.gpx" class="btn-act btn-gpx">GPX</a>
+                        <a href="https://www.google.com/maps/d/edit?mid=1cjIeVVwX4XZfwwaCL5DF_3UlzLQdDgQ&usp=sharing" class="btn-act btn-maps">MAPPA</a>
+                        <a href="dati-percorso-6km.gpx" class="btn-act btn-gpx">GPX</a>
                     </div>
                 </div>
             </div>
@@ -179,7 +179,7 @@
                     </div>
                     <div class="btn-row">
                         <a href="https://www.google.com/maps/d/edit?mid=15G3m81gK34CUEKiHaMlB7KVyXnWXGQQ&usp=sharing" class="btn-act btn-maps">MAPPA</a>
-                        <a href="blu.gpx" class="btn-act btn-gpx">GPX</a>
+                        <a href="dati-percorso-11km.gpx" class="btn-act btn-gpx">GPX</a>
                     </div>
                 </div>
             </div>
@@ -203,7 +203,7 @@
                     </div>
                     <div class="btn-row">
                         <a href="https://www.google.com/maps/d/edit?mid=1TjBL0i0gaicKMvE0qQMWMTtX8s5PZPc&usp=sharing" class="btn-act btn-maps">MAPPA</a>
-                        <a href="rosso.gpx" class="btn-act btn-gpx">GPX</a>
+                        <a href="dati-percorso-18km.gpx" class="btn-act btn-gpx">GPX</a>
                     </div>
                 </div>
             </div>
@@ -299,20 +299,103 @@
         function stampaLiberatoria() {
             if(!document.getElementById('fPrivacy').checked) { alert("Accetta i termini per procedere."); return; }
             const d = {
-                n: document.getElementById('fNome').value || "________________",
+                n: (document.getElementById('fNome').value || "________________").toUpperCase(),
                 dt: document.getElementById('fData').value || "________________",
-                res: document.getElementById('fIndirizzo').value || "________________",
+                luogo: (document.getElementById('fLuogo').value || "________________").toUpperCase(),
+                res: (document.getElementById('fIndirizzo').value || "________________").toUpperCase(),
+                tel: document.getElementById('fTel').value || "________________",
+                email: document.getElementById('fEmail').value || "________________",
                 p: document.getElementById('fPercorso').value
             };
+
+            const selVerde = d.p.includes("Verde") ? "<b>[X] VERDE</b>" : "[ ] VERDE";
+            const selBlu = d.p.includes("Blu") ? "<b>[X] BLU</b>" : "[ ] BLU";
+            const selRosso = d.p.includes("Rosso") ? "<b>[X] ROSSO</b>" : "[ ] ROSSO";
+
             const w = window.open('', '_blank');
             w.document.write(`
-                <html><body style="font-family:sans-serif; padding:50px; line-height:1.6;">
-                <center><h2>MARCIA DEI DUE LAGHETTI 2026</h2><h3>Dichiarazione di Responsabilità</h3></center>
-                <hr><p>Il sottoscritto <b>${d.n}</b>, nato il <b>${d.dt}</b> e residente in <b>${d.res}</b>,</p>
-                <p>iscrivendosi al percorso <b>${d.p}</b>, dichiara di essere in possesso di certificazione medica o di essere in stato di buona salute.</p>
-                <p>Solleva l'organizzazione da ogni responsabilità civile e penale per infortuni durante l'evento.</p>
-                <br><br><p>Data: 14/06/2026       Firma: __________________________</p>
-                </body></html>
+                <html>
+                <head>
+                    <style>
+                        @page { size: A5; margin: 0; }
+                        body { 
+                            font-family: 'Arial', sans-serif; 
+                            margin: 0; padding: 5mm; 
+                            width: 148mm; height: 210mm;
+                            background: #fff; font-size: 7.2pt; line-height: 1.15; color: #000;
+                        }
+                        .container { border: 0.5pt solid #000; padding: 4mm; height: 100%; box-sizing: border-box; }
+                        .header { text-align: center; margin-bottom: 3mm; border-bottom: 0.5pt solid #eee; padding-bottom: 2mm; }
+                        .header h2 { font-size: 10pt; margin: 0; text-transform: uppercase; }
+                        .header h3 { font-size: 8pt; margin: 2pt 0; font-weight: bold; }
+                        .percorso-box { margin-bottom: 3mm; font-size: 8pt; }
+                        .registry { margin-bottom: 3mm; }
+                        .registry p { margin: 2pt 0; }
+                        .legal-title { font-weight: bold; text-decoration: underline; margin-top: 3mm; display: block; text-transform: uppercase; font-size: 7pt; }
+                        .legal-text { text-align: justify; margin-bottom: 2mm; display: block; }
+                        .signature-table { width: 100%; margin-top: 3mm; border-collapse: collapse; }
+                        .signature-table td { border-bottom: 0.5pt solid #000; height: 15pt; width: 50%; padding-bottom: 2pt; }
+                        .signature-label { font-size: 6pt; color: #444; }
+                    </style>
+                </head>
+                <body>
+                    <div class="container">
+                        <div class="percorso-box">
+                            SCELTA PERCORSO: ${selVerde} | ${selBlu} | ${selRosso}
+                        </div>
+
+                        <div class="header">
+                            <h2>15^ MARCIA DEI 2 LAGHETTI</h2>
+                            <p>(Trota in Festa 2026 – Associazione per Cornino – 14/06/2026)</p>
+                            <h3>MODULO D’ISCRIZIONE E CONTESTUALE LIBERATORIA</h3>
+                        </div>
+
+                        <div class="registry">
+                            <p>Il sottoscritto/a: <b>${d.n}</b></p>
+                            <p>Nato/a a: <b>${d.luogo}</b> | Il giorno: <b>${d.dt}</b></p>
+                            <p>Indirizzo (Via, civico, città, CAP, Prov): <b>${d.res}</b></p>
+                            <p>Telefono: <b>${d.tel}</b> | E-mail: <b>${d.email}</b></p>
+                        </div>
+
+                        <span class="legal-title">IDONEITA’ FISICA NON AGONISTICA</span>
+                        <span class="legal-text">
+                            La volontaria iscrizione e partecipazione alla manifestazione è considerata anche tacita dichiarazione di idoneità fisica per questa attività sportiva amatoriale non competitiva. L’organizzazione per tanto, che in base alle vigenti normative non è tenuta a richiedere certificato medico di buona salute del partecipante, considera con l’iscrizione l’idoneità fisica inerente la normativa di legge prevista del (D.M. 28.02.1983) sulla tutela sanitaria per l’attività non competitiva e declina ogni responsabilità civile e penale per quanto fisicamente possa accadere, prima, durante e dopo la manifestazione. In particolare non saranno presi in considerazione reclami o infortuni causati dal mancato rispetto del regolamento podistico sportivo e dalla inosservanza del codice della strada, dalle partenze anticipate o dalle deviazioni del percorso tracciato dall’ organizzazione. Questa dichiarazione deve essere letta e sottoscritta da tutti i partecipanti alla manifestazione e dai genitori, o da chi ne fa le veci, per i minori di 18 anni. Il partecipante dichiara inoltre, di conoscere ed accettare in ogni sua parte il regolamento riportato on-line sulla pagina Facebook dell’ente organizzatore “Associazione Per Cornino”.
+                        </span>
+
+                        <span class="legal-title">DICHIARAZIONE DI ESONERO DI RESPONSABILITA’ DEGLI ORGANIZZATORI</span>
+                        <span class="legal-text">
+                            Il Partecipante, si impegna ad assumere, a pena di esclusione dall’evento, un comportamento conforme ai principi di lealtà e correttezza sportiva in occasione della gara e a non assumere, in nessun caso, comportamenti contrari alla legge e alle norme del regolamento che possano mettere in pericolo la propria o l’altrui incolumità; Il Partecipante solleva l’organizzazione da qualsiasi responsabilità, diretta e indiretta, per eventuali danni materiali e non materiali e/o spese (ivi incluse le spese legali), che dovessero derivargli a seguito della partecipazione all’evento sportivo, anche in conseguenza del proprio comportamento; Il Partecipante, infine, con la firma del presente modulo si assume ogni responsabilità che possa derivare dall’esercizio dell’attività sportiva in questione e solleva gli organizzatori da ogni responsabilità civile e penale, anche oggettiva, in conseguenza di infortuni cagionati a sé o a terzi ed a malori verificatisi durante l'intera durata dell'evento, o conseguenti all'utilizzo delle infrastrutture, nonché solleva gli organizzatori da ogni responsabilità legata a furti e/o danneggiamenti di qualsiasi oggetto personale. Ai sensi e per gli effetti di cui agli artt. 1341 e 1342 del c.c. il Partecipante dichiara di aver attentamente esaminato tutte le clausole contenute nella dichiarazione di esonero di responsabilità degli organizzatori e di approvarne specificamente tutti i punti elencati.
+                        </span>
+
+                        <table class="signature-table">
+                            <tr>
+                                <td></td>
+                                <td style="text-align: right; border:none;">Data: 14/06/2026</td>
+                            </tr>
+                            <tr>
+                                <td class="signature-label">Firma (Genitore se minore)</td>
+                                <td></td>
+                            </tr>
+                        </table>
+
+                        <span class="legal-title">AUTORIZZAZIONE AL TRATTAMENTO DEI DATI PERSONALI</span>
+                        <span class="legal-text">
+                            Preso atto dell'informativa di cui all'art. 13 del decreto legislativo 30 giugno 2003, n. 196, il Partecipante autorizza il trattamento e la comunicazione alle associazioni organizzatrici dei propri dati personali, per le finalità connesse alla realizzazione dell’evento sportivo e per la eventuale pubblicazione dei risultati della gara. Il Partecipante esprime il consenso ai trattamenti specificati nell’informativa, autorizzando l’invio di materiale informativo relativo a successive manifestazioni o varie iniziative proposte dagli organizzatori e autorizza ad eventuali riprese fotografiche e cinematografiche per la realizzazione di video, bacheche, pubblicazione su carta stampata e web (compreso download).
+                        </span>
+
+                        <table class="signature-table">
+                            <tr>
+                                <td class="signature-label">Firma per il consenso Privacy</td>
+                                <td></td>
+                            </tr>
+                        </table>
+
+                        <div style="font-size: 6pt; color: #555; margin-top: 3mm; border-top: 0.5pt solid #eee; padding-top: 2mm;">
+                            <b>Informativa ex art. 13 del D. Lgs n. 196/03:</b> I dati sono trattati in forma cartacea ed informatica dall’Organizzatore per gli adempimenti connessi all’organizzazione. Il mancato conferimento dei dati comporta l’impossibilità di accettare l’iscrizione.
+                        </div>
+                    </div>
+                </body>
+                </html>
             `);
             w.document.close();
             w.print();
