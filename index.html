@@ -129,7 +129,7 @@
     <div class="hero">
         <div class="hero-bg"></div>
         <img src="testo-marcia-dei-due-laghetti.png" class="hero-logo">
-        <p style="color:white; font-family:'Montserrat'; letter-spacing:6px; margin-top:20px; font-weight:700; font-size:0.9rem;">CORNINO • <br>DOMENICA 14 GIUGNO 2026</p>
+        <p style="color:white; font-family:'Montserrat'; letter-spacing:6px; margin-top:20px; font-weight:700; font-size:0.9rem;">CORNINO • DOMENICA 14 GIUGNO</p>
     </div>
 
     <section id="percorsi">
@@ -154,8 +154,9 @@
                         <div class="tech-box"><span>Tempo</span><strong>1.5h</strong></div>
                     </div>
                     <div class="btn-row">
-                        <a href="https://www.google.com/maps/d/edit?mid=1cjIeVVwX4XZfwwaCL5DF_3UlzLQdDgQ&usp=sharing" class="btn-act btn-maps">MAPPA</a>
-                        <a href="dati-percorso-6km.gpx" class="btn-act btn-gpx">GPX</a>
+                        <!-- Link aggiornato per favorire l'app Google Maps -->
+                        <a href="https://www.google.com/maps/d/viewer?mid=1zPN_J8c7Cka_MFWO9vsWQhy2FAzkV5I" target="_blank" class="btn-act btn-maps">MAPPA</a>
+                        <a href="verde.gpx" class="btn-act btn-gpx">GPX</a>
                     </div>
                 </div>
             </div>
@@ -178,8 +179,9 @@
                         <div class="tech-box"><span>Tempo</span><strong>3.0h</strong></div>
                     </div>
                     <div class="btn-row">
-                        <a href="https://www.google.com/maps/d/edit?mid=15G3m81gK34CUEKiHaMlB7KVyXnWXGQQ&usp=sharing" class="btn-act btn-maps">MAPPA</a>
-                        <a href="dati-percorso-11km.gpx" class="btn-act btn-gpx">GPX</a>
+                        <!-- Link aggiornato per favorire l'app Google Maps -->
+                        <a href="https://www.google.com/maps/d/viewer?mid=15G3m81gK34CUEKiHaMlB7KVyXnWXGQQ" target="_blank" class="btn-act btn-maps">MAPPA</a>
+                        <a href="blu.gpx" class="btn-act btn-gpx">GPX</a>
                     </div>
                 </div>
             </div>
@@ -202,8 +204,9 @@
                         <div class="tech-box"><span>Tempo</span><strong>5.0h</strong></div>
                     </div>
                     <div class="btn-row">
-                        <a href="https://www.google.com/maps/d/edit?mid=1TjBL0i0gaicKMvE0qQMWMTtX8s5PZPc&usp=sharing" class="btn-act btn-maps">MAPPA</a>
-                        <a href="dati-percorso-18km.gpx" class="btn-act btn-gpx">GPX</a>
+                        <!-- Link aggiornato per favorire l'app Google Maps -->
+                        <a href="https://www.google.com/maps/d/viewer?mid=1TjBL0i0gaicKMvE0qQMWMTtX8s5PZPc" target="_blank" class="btn-act btn-maps">MAPPA</a>
+                        <a href="rosso.gpx" class="btn-act btn-gpx">GPX</a>
                     </div>
                 </div>
             </div>
@@ -298,6 +301,7 @@
     <script>
         function stampaLiberatoria() {
             if(!document.getElementById('fPrivacy').checked) { alert("Accetta i termini per procedere."); return; }
+            
             const d = {
                 n: (document.getElementById('fNome').value || "________________").toUpperCase(),
                 dt: document.getElementById('fData').value || "________________",
@@ -357,12 +361,12 @@
                             <p>Telefono: <b>${d.tel}</b> | E-mail: <b>${d.email}</b></p>
                         </div>
 
-                        <span class="legal-title">IDONEITA’ FISICA NON AGONISTICA</span>
+                        <span class="legal-title">IDONEITA’ FISICA NON AGONISTICA[cite: 2]</span>
                         <span class="legal-text">
                             La volontaria iscrizione e partecipazione alla manifestazione è considerata anche tacita dichiarazione di idoneità fisica per questa attività sportiva amatoriale non competitiva. L’organizzazione per tanto, che in base alle vigenti normative non è tenuta a richiedere certificato medico di buona salute del partecipante, considera con l’iscrizione l’idoneità fisica inerente la normativa di legge prevista del (D.M. 28.02.1983) sulla tutela sanitaria per l’attività non competitiva e declina ogni responsabilità civile e penale per quanto fisicamente possa accadere, prima, durante e dopo la manifestazione. In particolare non saranno presi in considerazione reclami o infortuni causati dal mancato rispetto del regolamento podistico sportivo e dalla inosservanza del codice della strada, dalle partenze anticipate o dalle deviazioni del percorso tracciato dall’ organizzazione. Questa dichiarazione deve essere letta e sottoscritta da tutti i partecipanti alla manifestazione e dai genitori, o da chi ne fa le veci, per i minori di 18 anni. Il partecipante dichiara inoltre, di conoscere ed accettare in ogni sua parte il regolamento riportato on-line sulla pagina Facebook dell’ente organizzatore “Associazione Per Cornino”.
                         </span>
 
-                        <span class="legal-title">DICHIARAZIONE DI ESONERO DI RESPONSABILITA’ DEGLI ORGANIZZATORI</span>
+                        <span class="legal-title">DICHIARAZIONE DI ESONERO DI RESPONSABILITA’ DEGLI ORGANIZZATORI[cite: 2]</span>
                         <span class="legal-text">
                             Il Partecipante, si impegna ad assumere, a pena di esclusione dall’evento, un comportamento conforme ai principi di lealtà e correttezza sportiva in occasione della gara e a non assumere, in nessun caso, comportamenti contrari alla legge e alle norme del regolamento che possano mettere in pericolo la propria o l’altrui incolumità; Il Partecipante solleva l’organizzazione da qualsiasi responsabilità, diretta e indiretta, per eventuali danni materiali e non materiali e/o spese (ivi incluse le spese legali), che dovessero derivargli a seguito della partecipazione all’evento sportivo, anche in conseguenza del proprio comportamento; Il Partecipante, infine, con la firma del presente modulo si assume ogni responsabilità che possa derivare dall’esercizio dell’attività sportiva in questione e solleva gli organizzatori da ogni responsabilità civile e penale, anche oggettiva, in conseguenza di infortuni cagionati a sé o a terzi ed a malori verificatisi durante l'intera durata dell'evento, o conseguenti all'utilizzo delle infrastrutture, nonché solleva gli organizzatori da ogni responsabilità legata a furti e/o danneggiamenti di qualsiasi oggetto personale. Ai sensi e per gli effetti di cui agli artt. 1341 e 1342 del c.c. il Partecipante dichiara di aver attentamente esaminato tutte le clausole contenute nella dichiarazione di esonero di responsabilità degli organizzatori e di approvarne specificamente tutti i punti elencati.
                         </span>
@@ -378,7 +382,7 @@
                             </tr>
                         </table>
 
-                        <span class="legal-title">AUTORIZZAZIONE AL TRATTAMENTO DEI DATI PERSONALI</span>
+                        <span class="legal-title">AUTORIZZAZIONE AL TRATTAMENTO DEI DATI PERSONALI[cite: 2]</span>
                         <span class="legal-text">
                             Preso atto dell'informativa di cui all'art. 13 del decreto legislativo 30 giugno 2003, n. 196, il Partecipante autorizza il trattamento e la comunicazione alle associazioni organizzatrici dei propri dati personali, per le finalità connesse alla realizzazione dell’evento sportivo e per la eventuale pubblicazione dei risultati della gara. Il Partecipante esprime il consenso ai trattamenti specificati nell’informativa, autorizzando l’invio di materiale informativo relativo a successive manifestazioni o varie iniziative proposte dagli organizzatori e autorizza ad eventuali riprese fotografiche e cinematografiche per la realizzazione di video, bacheche, pubblicazione su carta stampata e web (compreso download).
                         </span>
@@ -391,7 +395,7 @@
                         </table>
 
                         <div style="font-size: 6pt; color: #555; margin-top: 3mm; border-top: 0.5pt solid #eee; padding-top: 2mm;">
-                            <b>Informativa ex art. 13 del D. Lgs n. 196/03:</b> I dati sono trattati in forma cartacea ed informatica dall’Organizzatore per gli adempimenti connessi all’organizzazione. Il mancato conferimento dei dati comporta l’impossibilità di accettare l’iscrizione.
+                            <b>Informativa ex art. 13 del D. Lgs n. 196/03[cite: 2]:</b> I dati sono trattati in forma cartacea ed informatica dall’Organizzatore per gli adempimenti connessi all’organizzazione. Il mancato conferimento dei dati comporta l’impossibilità di accettare l’iscrizione.
                         </div>
                     </div>
                 </body>
