@@ -329,12 +329,12 @@
             if(!document.getElementById('fPrivacy').checked) { alert("Accetta i termini per procedere."); return; }
             
             const d = {
-                n: (document.getElementById('fNome').value || "_____________________________________________________________________________________________________").toUpperCase(),
+                n: (document.getElementById('fNome').value || "________________________________________________________________________________________________________").toUpperCase(),
                 dt: document.getElementById('fData').value || "____________________________________________________",
                 luogo: (document.getElementById('fLuogo').value || "________________________________________________").toUpperCase(),
-                res: (document.getElementById('fIndirizzo').value || "_____________________________________________________________________________").toUpperCase(),
+                res: (document.getElementById('fIndirizzo').value || "__________________________________________________________________________________").toUpperCase(),
                 tel: document.getElementById('fTel').value || "________________________________________________",
-                email: document.getElementById('fEmail').value || "_________________________________________________________",
+                email: document.getElementById('fEmail').value || "_______________________________________________________",
                 p: document.getElementById('fPercorso').value
             };
 
