@@ -348,47 +348,7 @@
         <p style="font-size: 0.7rem; opacity: 0.5;">© 2026 Marcia dei Due Laghetti. Tutti i diritti riservati.</p>
     </footer>
 
-    <script>
-        // Logica Galleria Pieno Schermo
-        let currentImgIdx = 0;
-        const images = Array.from(document.querySelectorAll('.gallery-item img')).map(img => img.src);
-        const lbox = document.getElementById('lightbox');
-        const lboxImg = document.getElementById('lightbox-img');
-
-        function openLightbox(index) {
-            currentImgIdx = index;
-            lboxImg.src = images[currentImgIdx];
-            lbox.classList.add('active');
-            document.body.style.overflow = 'hidden'; // Blocca scroll body
-        }
-
-        function closeLightbox(e) {
-            if (e.target.id === 'lightbox' || e.target.closest('.close-lbox')) {
-                lbox.classList.remove('active');
-                document.body.style.overflow = 'auto';
-            }
-        }
-
-        function changeImg(step, e) {
-            e.stopPropagation();
-            currentImgIdx += step;
-            if (currentImgIdx >= images.length) currentImgIdx = 0;
-            if (currentImgIdx < 0) currentImgIdx = images.length - 1;
-            lboxImg.src = images[currentImgIdx];
-        }
-
-        // Supporto tastiera per desktop
-        document.addEventListener('keydown', (e) => {
-            if (!lbox.classList.contains('active')) return;
-            if (e.key === "ArrowRight") changeImg(1, e);
-            if (e.key === "ArrowLeft") changeImg(-1, e);
-            if (e.key === "Escape") {
-                lbox.classList.remove('active');
-                document.body.style.overflow = 'auto';
-            }
-        });
-
-        // Funzione Stampa Liberatoria (Inalterata)
+   <script>
         function stampaLiberatoria() {
             if(!document.getElementById('fPrivacy').checked) { alert("Accetta i termini per procedere."); return; }
             
@@ -434,29 +394,59 @@
                 </head>
                 <body>
                     <div class="container">
-                        <div class="percorso-box">SCELTA PERCORSO: ${selVerde} | ${selBlu} | ${selRosso}</div>
+                        <div class="percorso-box">
+                            SCELTA PERCORSO: ${selVerde} | ${selBlu} | ${selRosso}
+                        </div>
+
                         <div class="header">
                             <h2>13^ MARCIA DEI 2 LAGHETTI</h2>
                             <p>(Trota in Festa 2026 – Associazione per Cornino – 14/06/2026)</p>
                             <h3>MODULO D’ISCRIZIONE E CONTESTUALE LIBERATORIA</h3>
                         </div>
+
                         <div class="registry">
                             <p>Il sottoscritto/a: <b>${d.n}</b></p>
                             <p>Nato/a a: <b>${d.luogo}</b> | Il giorno: <b>${d.dt}</b></p>
                             <p>Indirizzo (Via, civico, città, CAP, Prov): <b>${d.res}</b></p>
                             <p>Telefono: <b>${d.tel}</b> | E-mail: <b>${d.email}</b></p>
                         </div>
+
                         <span class="legal-title">IDONEITA’ FISICA NON AGONISTICA</span>
-                        <span class="legal-text">La volontaria iscrizione e partecipazione alla manifestazione è considerata anche tacita dichiarazione di idoneità fisica per questa attività sportiva amatoriale non competitiva...</span>
-                        <span class="legal-title">DICHIARAZIONE DI ESONERO DI RESPONSABILITA’</span>
-                        <span class="legal-text">Il Partecipante solleva l’organizzazione da qualsiasi responsabilità, diretta e indiretta, per eventuali danni materiali e non materiali...</span>
+                        <span class="legal-text">
+                            La volontaria iscrizione e partecipazione alla manifestazione è considerata anche tacita dichiarazione di idoneità fisica per questa attività sportiva amatoriale non competitiva. L’organizzazione per tanto, che in base alle vigenti normative non è tenuta a richiedere certificato medico di buona salute del partecipante, considera con l’iscrizione l’idoneità fisica inerente la normativa di legge prevista del (D.M. 28.02.1983) sulla tutela sanitaria per l’attività non competitiva e declina ogni responsabilità civile e penale per quanto fisicamente possa accadere, prima, durante e dopo la manifestazione. In particolare non saranno presi in considerazione reclami o infortuni causati dal mancato rispetto del regolamento podistico sportivo e dalla inosservanza del codice della strada, dalle partenze anticipate o dalle deviazioni del percorso tracciato dall’ organizzazione. Questa dichiarazione deve essere letta e sottoscritta da tutti i partecipanti alla manifestazione e dai genitori, o da chi ne fa le veci, per i minori di 18 anni. Il partecipante dichiara inoltre, di conoscere ed accettare in ogni sua parte il regolamento riportato on-line sulla pagina Facebook dell’ente organizzatore “Associazione Per Cornino”.
+                        </span>
+
+                        <span class="legal-title">DICHIARAZIONE DI ESONERO DI RESPONSABILITA’ DEGLI ORGANIZZATORI</span>
+                        <span class="legal-text">
+                            Il Partecipante, si impegna ad assumere, a pena di esclusione dall’evento, un comportamento conforme ai principi di lealtà e correttezza sportiva in occasione della gara e a non assumere, in nessun caso, comportamenti contrari alla legge e alle norme del regolamento che possano mettere in pericolo la propria o l’altrui incolumità; Il Partecipante solleva l’organizzazione da qualsiasi responsabilità, diretta e indiretta, per eventuali danni materiali e non materiali e/o spese (ivi incluse le spese legali), che dovessero derivargli a seguito della partecipazione all’evento sportivo, anche in conseguenza del proprio comportamento; Il Partecipante, infine, con la firma del presente modulo si assume ogni responsabilità che possa derivare dall’esercizio dell’attività sportiva in questione e solleva gli organizzatori da ogni responsabilità civile e penale, anche oggettiva, in conseguenza di infortuni cagionati a sé o a terzi ed a malori verificatisi durante l'intera durata dell'evento, o conseguenti all'utilizzo delle infrastrutture, nonché solleva gli organizzatori da ogni responsabilità legata a furti e/o danneggiamenti di qualsiasi oggetto personale. Ai sensi e per gli effetti di cui agli artt. 1341 e 1342 del c.c. il Partecipante dichiara di aver attentamente esaminato tutte le clausole contenute nella dichiarazione di esonero di responsabilità degli organizzatori e di approvarne specificamente tutti i punti elencati.
+                        </span>
+
                         <table class="signature-table">
-                            <tr><td></td><td style="text-align: right; border:none;">Data: 14/06/2026</td></tr>
-                            <tr><td class="signature-label">Firma (Genitore se minore)</td><td></td></tr>
+                            <tr>
+                                <td></td>
+                                <td style="text-align: right; border:none;">Data: 14/06/2026</td>
+                            </tr>
+                            <tr>
+                                <td class="signature-label">Firma (Genitore se minore)</td>
+                                <td></td>
+                            </tr>
                         </table>
-                        <span class="legal-title">PRIVACY</span>
-                        <span class="legal-text">Autorizzo il trattamento dei dati personali per le finalità connesse alla manifestazione.</span>
-                        <table class="signature-table"><tr><td class="signature-label">Firma per il consenso Privacy</td><td></td></tr></table>
+
+                        <span class="legal-title">AUTORIZZAZIONE AL TRATTAMENTO DEI DATI PERSONALI</span>
+                        <span class="legal-text">
+                            Preso atto dell'informativa di cui all'art. 13 del decreto legislativo 30 giugno 2003, n. 196, il Partecipante autorizza il trattamento e la comunicazione alle associazioni organizzatrici dei propri dati personali, per le finalità connesse alla realizzazione dell’evento sportivo e per la eventuale pubblicazione dei risultati della gara. Il Partecipante esprime il consenso ai trattamenti specificati nell’informativa, autorizzando l’invio di materiale informativo relativo a successive manifestazioni o varie iniziative proposte dagli organizzatori e autorizza ad eventuali riprese fotografiche e cinematografiche per la realizzazione di video, bacheche, pubblicazione su carta stampata e web (compreso download).
+                        </span>
+
+                        <table class="signature-table">
+                            <tr>
+                                <td class="signature-label">Firma per il consenso Privacy</td>
+                                <td></td>
+                            </tr>
+                        </table>
+
+                        <div style="font-size: 6pt; color: #555; margin-top: 3mm; border-top: 0.5pt solid #eee; padding-top: 2mm;">
+                            <b>Informativa ex art. 13 del D. Lgs n. 196/03[cite: 2]:</b> I dati sono trattati in forma cartacea ed informatica dall’Organizzatore per gli adempimenti connessi all’organizzazione. Il mancato conferimento dei dati comporta l’impossibilità di accettare l’iscrizione.
+                        </div>
                     </div>
                 </body>
                 </html>
