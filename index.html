@@ -348,7 +348,47 @@
         <p style="font-size: 0.7rem; opacity: 0.5;">© 2026 Marcia dei Due Laghetti. Tutti i diritti riservati.</p>
     </footer>
 
-   <script>
+    <script>
+        // Logica Galleria Pieno Schermo
+        let currentImgIdx = 0;
+        const images = Array.from(document.querySelectorAll('.gallery-item img')).map(img => img.src);
+        const lbox = document.getElementById('lightbox');
+        const lboxImg = document.getElementById('lightbox-img');
+
+        function openLightbox(index) {
+            currentImgIdx = index;
+            lboxImg.src = images[currentImgIdx];
+            lbox.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Blocca scroll body
+        }
+
+        function closeLightbox(e) {
+            if (e.target.id === 'lightbox' || e.target.closest('.close-lbox')) {
+                lbox.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        function changeImg(step, e) {
+            e.stopPropagation();
+            currentImgIdx += step;
+            if (currentImgIdx >= images.length) currentImgIdx = 0;
+            if (currentImgIdx < 0) currentImgIdx = images.length - 1;
+            lboxImg.src = images[currentImgIdx];
+        }
+
+        // Supporto tastiera per desktop
+        document.addEventListener('keydown', (e) => {
+            if (!lbox.classList.contains('active')) return;
+            if (e.key === "ArrowRight") changeImg(1, e);
+            if (e.key === "ArrowLeft") changeImg(-1, e);
+            if (e.key === "Escape") {
+                lbox.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Funzione Stampa Liberatoria (Inalterata)
         function stampaLiberatoria() {
             if(!document.getElementById('fPrivacy').checked) { alert("Accetta i termini per procedere."); return; }
             
