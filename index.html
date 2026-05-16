@@ -244,7 +244,7 @@
                     <i class="fas fa-tint"></i>
                     <div>
                         <strong>Idratazione</strong>
-                        <p>Anche se sono presenti ristori lungo i percorsi un po' d'acqua nello zaino non può mai mancare.</p>
+                        <p>Saranno presenti ristori lungo i percorsi ma un po' d'acqua nello zaino non può mai mancare.</p>
                     </div>
                 </div>
                 <div class="info-item">
@@ -297,6 +297,10 @@
             <div class="gallery-item" onclick="openLightbox(7)"><img src="legna-roccia.webp"></div>
             <div class="gallery-item" onclick="openLightbox(8)"><img src="cartello-lago.webp"></div>
             <div class="gallery-item" onclick="openLightbox(9)"><img src="cartello-gretolates.webp"></div>
+            <div class="gallery-item" onclick="openLightbox(9)"><img src="strada-ingresso.jpg"></div>
+            <div class="gallery-item" onclick="openLightbox(9)"><img src="strada-fiori.webp"></div>
+            <div class="gallery-item" onclick="openLightbox(9)"><img src="sfondo-panoramica.webp"></div>
+            <div class="gallery-item" onclick="openLightbox(9)"><img src="lago-riva.webp"></div>
         </div>
     </section>
 
@@ -307,34 +311,59 @@
         <span class="lightbox-btn next-lbox" onclick="changeImg(1, event)"><i class="fas fa-chevron-right"></i></span>
     </div>
 
-    <section id="iscrizione">
-        <h2 class="title">Modulo <span>Partecipazione</span></h2>
-        <div class="form-container">
-            <div class="form-group"><label>Nome e Cognome</label><input type="text" id="fNome" placeholder="es. Mario Rossi"></div>
-            <div class="form-row">
-                <div class="form-group"><label>Data di Nascita</label><input type="date" id="fData"></div>
-                <div class="form-group"><label>Luogo di Nascita</label><input type="text" id="fLuogo" placeholder="Città"></div>
-            </div>
-            <div class="form-group"><label>Residenza</label><input type="text" id="fIndirizzo" placeholder="Via, n., CAP, Città"></div>
-            <div class="form-row">
-                <div class="form-group"><label>Cellulare</label><input type="tel" id="fTel" placeholder="333 0000000"></div>
-                <div class="form-group"><label>Email</label><input type="email" id="fEmail" placeholder="mario@email.it"></div>
+<section id="iscrizione">
+    <h2 class="title">Modulo <span>Partecipazione</span></h2>
+    <div class="form-container">
+        <div class="form-group">
+            <label>Nome e Cognome</label>
+            <input type="text" id="fNome" placeholder="es. Mario Rossi" required>
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                <label>Data di Nascita</label>
+                <input type="date" id="fData" required>
             </div>
             <div class="form-group">
-                <label>Scelta Percorso</label>
-                <select id="fPercorso">
-                    <option>Verde (6.0 Km)</option>
-                    <option>Blu (11.0 Km)</option>
-                    <option>Rosso (18.0 Km)</option>
-                </select>
+                <label>Luogo di Nascita</label>
+                <input type="text" id="fLuogo" placeholder="Città" required>
             </div>
-            <div style="display:flex; gap:10px; align-items:flex-start; margin: 20px 0; font-size:0.8rem; color:#666;">
-                <input type="checkbox" id="fPrivacy" style="width:20px; height:20px;">
-                <label for="fPrivacy">Accetto il regolamento e dichiaro di essere idoneo fisicamente alla camminata scelta.</label>
-            </div>
-            <button class="btn-stampa" onclick="stampaLiberatoria()">GENERA LIBERATORIA</button>
         </div>
-    </section>
+        <div class="form-group">
+            <label>Residenza</label>
+            <input type="text" id="fIndirizzo" placeholder="Via, n., CAP, Città" required>
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                <label>Cellulare</label>
+                <input type="tel" id="fTel" placeholder="333 0000000" required>
+            </div>
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" id="fEmail" placeholder="mario@email.it" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Scelta Percorso</label>
+            <select id="fPercorso" required>
+                <option value="">-- Seleziona un percorso --</option>
+                <option>Verde (6.0 Km)</option>
+                <option>Blu (11.0 Km)</option>
+                <option>Rosso (18.0 Km)</option>
+            </select>
+        </div>
+        <div style="display:flex; gap:10px; align-items:flex-start; margin: 20px 0; font-size:0.8rem; color:#666;">
+            <input type="checkbox" id="fPrivacy" style="width:20px; height:20px;" required>
+            <label for="fPrivacy">Accetto il regolamento e dichiaro di essere idoneo fisicamente alla camminata scelta.</label>
+        </div>
+        
+        <button class="btn-stampa" onclick="stampaLiberatoria()">GENERA LIBERATORIA</button>
+
+        <div style="margin-top: 25px; padding: 15px; background: #fff5f5; border-radius: 12px; border-left: 4px solid var(--rosso-brand); font-size: 0.85rem; color: #444;">
+            <i class="fas fa-print" style="color: var(--rosso-brand); margin-right: 5px;"></i>
+            <strong>Nota:</strong> La seguente liberatoria è obbligatoria e sarà disponibile anche il giorno della marcia. Se non vuoi perdere tempo stampala da casa in <strong>formato A5</strong> e procedi al pagamento sul posto ai tavoli d'iscrizione. Ti verrà consegnato un braccialetto che ti consentirà di utilizzare i servizi durante l'escursione.
+        </div>
+    </div>
+</section>
 
     <footer>
         <img src="associazione-per-cornino-stemma.jpg" style="height:100px; margin-bottom:0px;">
@@ -390,15 +419,41 @@
 
         // Funzione Stampa Liberatoria (Inalterata)
         function stampaLiberatoria() {
-            if(!document.getElementById('fPrivacy').checked) { alert("Accetta i termini per procedere."); return; }
-            
+            // Recupero i riferimenti agli elementi
+            const campi = [
+                { id: 'fNome', label: 'Nome e Cognome' },
+                { id: 'fData', label: 'Data di Nascita' },
+                { id: 'fLuogo', label: 'Luogo di Nascita' },
+                { id: 'fIndirizzo', label: 'Residenza' },
+                { id: 'fTel', label: 'Cellulare' },
+                { id: 'fEmail', label: 'Email' },
+                { id: 'fPercorso', label: 'Percorso' }
+            ];
+
+            // Controllo che tutti i campi siano compilati
+            for (let campo of campi) {
+                const valore = document.getElementById(campo.id).value.trim();
+                if (!valore || valore === "") {
+                    alert(`Per favore, compila il campo: ${campo.label}`);
+                    document.getElementById(campo.id).focus();
+                    return;
+                }
+            }
+
+            // Controllo Privacy
+            if(!document.getElementById('fPrivacy').checked) { 
+            alert("È necessario accettare il regolamento e la dichiarazione di idoneità per procedere."); 
+            return; 
+            }
+
+            // Logica di generazione PDF/Stampa (Inalterata rispetto all'originale)
             const d = {
-                n: (document.getElementById('fNome').value || "__________________________________________________________________________________________________________").toUpperCase(),
-                dt: document.getElementById('fData').value || "____________________________________________________",
-                luogo: (document.getElementById('fLuogo').value || "________________________________________________").toUpperCase(),
-                res: (document.getElementById('fIndirizzo').value || "______________________________________________________________________________________").toUpperCase(),
-                tel: document.getElementById('fTel').value || "________________________________________________",
-                email: document.getElementById('fEmail').value || "____________________________________________________",
+                n: document.getElementById('fNome').value.toUpperCase(),
+                dt: document.getElementById('fData').value,
+                luogo: document.getElementById('fLuogo').value.toUpperCase(),
+                res: document.getElementById('fIndirizzo').value.toUpperCase(),
+                tel: document.getElementById('fTel').value,
+                email: document.getElementById('fEmail').value,
                 p: document.getElementById('fPercorso').value
             };
 
